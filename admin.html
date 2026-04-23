@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Luxury Scents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body-bg">
+
+  <!-- ═══════════ LOGIN GATE ═══════════ -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <p class="login-logo">✦</p>
+      <h1 class="login-title">Admin Access</h1>
+      <p class="login-sub">Enter your password to continue</p>
+      <div class="form-group">
+        <label for="passwordInput">Password</label>
+        <input type="password" id="passwordInput" placeholder="••••••••"
+               onkeydown="if(event.key==='Enter') login()">
+      </div>
+      <button class="login-btn" onclick="login()">Enter Dashboard</button>
+      <p class="login-error" id="loginError"></p>
+    </div>
+  </div>
+
+  <!-- ═══════════ ADMIN APP ═══════════ -->
+  <div class="admin-app" id="adminApp" style="display:none">
+
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="admin-logo">
+        <span class="logo-mark">✦</span>
+        <span class="admin-site-name">Luxury Scents</span>
+        <span class="admin-badge-pill">Admin</span>
+      </div>
+      <div class="admin-header-right">
+        <a href="index.html" class="view-site-btn" target="_blank">View Site ↗</a>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+      </div>
+    </header>
+
+    <!-- Body -->
+    <div class="admin-layout">
+
+      <!-- ADD PRODUCT PANEL -->
+      <aside class="add-panel">
+        <h2 class="panel-title">Add New Product</h2>
+
+        <div class="form-group">
+          <label for="pName">Product Name *</label>
+          <input type="text" id="pName" placeholder="e.g. Asad Midnight">
+        </div>
+        <div class="form-group">
+          <label for="pBrand">Brand *</label>
+          <input type="text" id="pBrand" placeholder="e.g. Asad">
+        </div>
+        <div class="form-group">
+          <label for="pCategory">Category</label>
+          <select id="pCategory">
+            <option value="asad">Asad</option>
+            <option value="lattafa">Lattafa</option>
+            <option value="afnan">Afnan</option>
+            <option value="fahkar">Fahkar</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="pPrice">Price (₦) *</label>
+          <input type="number" id="pPrice" placeholder="e.g. 35000" min="0">
+        </div>
+        <div class="form-group">
+          <label for="pImage">Image URL *</label>
+          <input type="text" id="pImage" placeholder="Luxury-scents-thumbnails/photo.jpg">
+        </div>
+        <div class="form-group">
+          <label for="pImage2">Second Image (optional)</label>
+          <input type="text" id="pImage2" placeholder="Luxury-scents-thumbnails/photo2.jpg">
+        </div>
+        <div class="form-group">
+          <label for="pImage3">Third Image (optional)</label>
+          <input type="text" id="pImage3" placeholder="Luxury-scents-thumbnails/photo3.jpg">
+        </div>
+        <div class="form-group">
+          <label for="pDesc">Short Description</label>
+          <input type="text" id="pDesc" placeholder="e.g. Rich amber with oud base">
+        </div>
+        <div class="form-group">
+          <label for="pNotes">Fragrance Notes <span class="label-hint">(comma separated)</span></label>
+          <input type="text" id="pNotes" placeholder="e.g. Oud, Amber, Musk">
+        </div>
+        <div class="form-group">
+          <label for="pBadge">Badge <span class="label-hint">(optional)</span></label>
+          <input type="text" id="pBadge" placeholder="e.g. New In, Best Seller">
+        </div>
+
+        <button class="add-btn" onclick="addProduct()">Add Product</button>
+        <p class="form-msg" id="formMsg"></p>
+      </aside>
+
+      <!-- PRODUCTS LIST -->
+      <main class="products-panel">
+        <div class="products-panel-header">
+          <h2 class="panel-title" style="margin-bottom:0">Manage Products</h2>
+          <p class="product-count" id="productCount">0 products</p>
+        </div>
+
+        <div class="admin-product-note">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Products you add here appear on the storefront alongside the default catalogue.
+        </div>
+
+        <div class="admin-product-list" id="adminProductList"></div>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ═══════════ EDIT PRODUCT MODAL ═══════════ -->
+  <div class="edit-modal-overlay" id="editModalOverlay">
+    <div class="edit-modal">
+      <h3>Edit Product</h3>
+
+      <div class="form-group">
+        <label for="editName">Product Name *</label>
+        <input type="text" id="editName" placeholder="e.g. Asad Midnight">
+      </div>
+      <div class="form-group">
+        <label for="editBrand">Brand</label>
+        <input type="text" id="editBrand" placeholder="e.g. Asad">
+      </div>
+      <div class="form-group">
+        <label for="editCategory">Category</label>
+        <select id="editCategory">
+          <option value="asad">Asad</option>
+          <option value="lattafa">Lattafa</option>
+          <option value="afnan">Afnan</option>
+          <option value="fahkar">Fahkar</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="editPrice">Price (₦) *</label>
+        <input type="number" id="editPrice" placeholder="e.g. 35000" min="0">
+      </div>
+      <div class="form-group">
+        <label for="editImage1">Main Image URL *</label>
+        <input type="text" id="editImage1" placeholder="Luxury-scents-thumbnails/photo.jpg">
+      </div>
+      <div class="form-group">
+        <label for="editImage2">Second Image (optional)</label>
+        <input type="text" id="editImage2" placeholder="Luxury-scents-thumbnails/photo2.jpg">
+      </div>
+      <div class="form-group">
+        <label for="editImage3">Third Image (optional)</label>
+        <input type="text" id="editImage3" placeholder="Luxury-scents-thumbnails/photo3.jpg">
+      </div>
+      <div class="form-group">
+        <label for="editDesc">Short Description</label>
+        <input type="text" id="editDesc" placeholder="e.g. Rich amber with oud base">
+      </div>
+      <div class="form-group">
+        <label for="editNotes">Fragrance Notes <span class="label-hint">(comma separated)</span></label>
+        <input type="text" id="editNotes" placeholder="e.g. Oud, Amber, Musk">
+      </div>
+      <div class="form-group">
+        <label for="editBadge">Badge <span class="label-hint">(optional)</span></label>
+        <input type="text" id="editBadge" placeholder="e.g. New In, Best Seller">
+      </div>
+
+      <div class="edit-modal-actions">
+        <button class="save-btn"   onclick="saveEdit()">Save Changes</button>
+        <button class="cancel-btn" onclick="closeEditModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

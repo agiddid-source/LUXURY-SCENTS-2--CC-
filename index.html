@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Scents — Original Fragrances</title>
+  <meta name="description" content="Shop 100% authentic luxury fragrances — Asad, Lattafa, Afnan, Fahkar and more. Fast delivery across Nigeria.">
+  <meta property="og:title" content="Luxury Scents — Original Fragrances">
+  <meta property="og:description" content="Shop authentic luxury fragrances at the best prices. Fast delivery across Nigeria.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">✦</span>
+        <span>Luxury Scents</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#products">Collection</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="cart-btn" onclick="toggleCart()" aria-label="Open cart">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#products" onclick="toggleMobileNav()">Collection</a>
+      <a href="#about" onclick="toggleMobileNav()">About</a>
+      <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ═══════════ CART DRAWER ═══════════ -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button onclick="toggleCart()" class="close-btn" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <p>Your cart is empty.</p>
+        <p class="cart-empty-sub">Add a fragrance to begin.</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <span id="cartTotal">₦0</span>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+        Checkout via WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">100% Authentic · Delivered Nationwide</p>
+      <h1 class="hero-title">Wear the<br><em>Extraordinary</em></h1>
+      <p class="hero-sub">Original luxury fragrances curated for the discerning soul</p>
+      <button class="hero-cta" onclick="scrollToProducts()">Explore Collection</button>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <svg width="14" height="20" viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="1" y="1" width="12" height="18" rx="6"/>
+        <circle cx="7" cy="6" r="1.5" fill="currentColor" class="scroll-dot"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══════════ TRUST BAR ═══════════ -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon">✦</span> 100% Original</div>
+    <div class="trust-item"><span class="trust-icon">✦</span> Fast Delivery Nationwide</div>
+    <div class="trust-item"><span class="trust-icon">✦</span> WhatsApp Order Support</div>
+    <div class="trust-item"><span class="trust-icon">✦</span> Secure & Trusted</div>
+  </div>
+
+  <!-- ═══════════ PRODUCTS ═══════════ -->
+  <section class="products-section" id="products">
+    <div class="section-header">
+      <p class="section-eyebrow">Our Collection</p>
+      <h2 class="section-title">Signature Fragrances</h2>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+      <button class="filter-btn" onclick="filterProducts('lattafa', this)">Lattafa</button>
+      <button class="filter-btn" onclick="filterProducts('asad', this)">Asad</button>
+      <button class="filter-btn" onclick="filterProducts('afnan', this)">Afnan</button>
+      <button class="filter-btn" onclick="filterProducts('fahkar', this)">Fahkar</button>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <section class="about-section" id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-eyebrow">Our Story</p>
+        <h2 class="about-title">Authentic Luxury,<br>Accessible Prices</h2>
+        <p class="about-body">We source directly from trusted suppliers to bring you 100% original Arabian and niche fragrances. Every bottle is verified authentic before it reaches you.</p>
+        <p class="about-body">Based in Port Harcourt, we deliver across Nigeria with care and speed.</p>
+        <a href="https://wa.me/2349154428230" target="_blank" class="about-cta">Chat With Us</a>
+      </div>
+      <div class="about-stats">
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Authentic Products</span></div>
+        <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Happy Customers</span></div>
+        <div class="stat"><span class="stat-num">24hr</span><span class="stat-label">Response Time</span></div>
+        <div class="stat"><span class="stat-num">Warri</span><span class="stat-label">Based in Delta State</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section class="contact-section" id="contact">
+    <div class="section-header">
+      <p class="section-eyebrow">Get In Touch</p>
+      <h2 class="section-title">We'd Love to Hear From You</h2>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form" id="contactForm" onsubmit="handleContact(event)">
+        <div class="form-group">
+          <label for="cName">Your Name</label>
+          <input type="text" id="cName" placeholder="e.g. Chisom Obi" required>
+        </div>
+        <div class="form-group">
+          <label for="cPhone">Phone Number</label>
+          <input type="tel" id="cPhone" placeholder="e.g. 08012345678" required>
+        </div>
+        <div class="form-group">
+          <label for="cMessage">Message (optional)</label>
+          <textarea id="cMessage" placeholder="Ask about a fragrance, delivery, etc." rows="4"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+        <p class="form-feedback" id="formFeedback"></p>
+      </form>
+      <div class="contact-info">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div>
+            <p class="contact-label">WhatsApp</p>
+            <a href="https://wa.me/2349154428230" target="_blank" class="contact-value">+234 915 442 8230</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><path d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg>
+          </div>
+          <div>
+            <p class="contact-label">Location</p>
+            <p class="contact-value">Warri, Delta State</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <p class="contact-label">Response Time</p>
+            <p class="contact-value">Within 24 hours</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">✦</span>
+        <span class="footer-name">Luxury Scents</span>
+        <p class="footer-tagline">Original fragrances for every occasion</p>
+      </div>
+      <div class="footer-links">
+        <p class="footer-col-title">Quick Links</p>
+        <a href="#products">Collection</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-links">
+        <p class="footer-col-title">Policies</p>
+        <a href="#">Refund Policy</a>
+        <a href="#">Delivery Info</a>
+        <a href="#">Authenticity Guarantee</a>
+      </div>
+      <div class="footer-social">
+        <p class="footer-col-title">Follow Us</p>
+        <div class="social-row">
+          <a href="https://wa.me/2349154428230" target="_blank" class="social-btn" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+          <a href="#" class="social-btn" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Luxury Scents. All rights reserved. Warri, Nigeria.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════ PRODUCT DETAIL MODAL ═══════════ -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeProductModal()"></div>
+  <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-label="Product details">
+    <button class="modal-close" onclick="closeProductModal()" aria-label="Close">✕</button>
+    <div class="modal-inner">
+
+      <!-- Gallery -->
+      <div class="modal-gallery">
+        <div class="modal-main-img-wrap">
+          <img id="modalMainImg" src="" alt="Product image">
+          <span class="modal-img-count" id="modalImgCount">1 / 3</span>
+          <button class="modal-nav modal-prev" id="modalPrev" onclick="modalNavImg(-1)" aria-label="Previous photo">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="modal-nav modal-next" id="modalNext" onclick="modalNavImg(1)" aria-label="Next photo">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="modal-thumbs" id="modalThumbs"></div>
+      </div>
+
+      <!-- Details -->
+      <div class="modal-details">
+        <div class="modal-details-top">
+          <p class="modal-brand" id="modalProductBrand"></p>
+          <span class="product-badge" id="modalBadge" style="display:none"></span>
+        </div>
+        <h2 class="modal-name" id="modalProductName"></h2>
+        <p class="modal-price" id="modalProductPrice"></p>
+        <p class="modal-desc" id="modalProductDesc"></p>
+        <div class="modal-note-tags" id="modalNoteTags"></div>
+        <div class="modal-divider"></div>
+        <div class="modal-actions">
+          <button class="checkout-btn" id="modalCartBtn">Add to Cart</button>
+          <a class="modal-wa-btn" id="modalWaBtn" href="#" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            Enquire on WhatsApp
+          </a>
+        </div>
+        <div class="modal-trust">
+          <span>✦ 100% Authentic</span>
+          <span>✦ Fast Delivery</span>
+          <span>✦ Secure Order</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
