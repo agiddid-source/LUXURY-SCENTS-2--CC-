@@ -166,7 +166,7 @@ const PRODUCTS = [
     category: "lattafa",
     price: 75000,
     description: "Warm, sweet, and addictive — tuned to perfection.",
-    notes: ["Plum", "Lavender", "Palo Santo", "Sandalwood", "Vanilla"],
+    notes: ["Plum", "Lavender", "Sandalwood", "Vanilla"],
     images: [
       "Luxury-scents-thumbnails/Lattafa Pride.webp",
       "Luxury-scents-thumbnails/Lattafa Pride.webp",
