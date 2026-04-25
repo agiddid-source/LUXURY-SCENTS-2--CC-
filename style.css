@@ -841,6 +841,13 @@ input, textarea, select { font-family: var(--sans); }
   flex-direction: column;
   gap: 10px;
 }
+/* Modal "Add to Cart" — matches the black card button, not the gold checkout button */
+.modal-actions .checkout-btn {
+  background: var(--black);
+  color: var(--white);
+}
+.modal-actions .checkout-btn:hover  { background: var(--gold); color: var(--black); }
+.modal-actions .checkout-btn.added  { background: var(--success); color: var(--white); }
 .modal-wa-btn {
   display: flex;
   align-items: center;
@@ -1047,19 +1054,19 @@ a.contact-value:hover { color: var(--gold); }
   letter-spacing: 0.04em;
   margin-top: 4px;
 }
-.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.32); line-height: 1.55; margin-top: 4px; }
+.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.58); line-height: 1.55; margin-top: 4px; }
 .footer-links { display: flex; flex-direction: column; gap: 10px; }
 .footer-col-title {
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.55);
   margin-bottom: 6px;
 }
 .footer-links a {
   font-size: 13px;
-  color: rgba(255,255,255,0.52);
+  color: rgba(255,255,255,0.75);
   transition: color var(--transition);
 }
 .footer-links a:hover { color: var(--gold-light); }
@@ -1072,7 +1079,7 @@ a.contact-value:hover { color: var(--gold); }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.52);
+  color: rgba(255,255,255,0.72);
   transition: border-color var(--transition), color var(--transition), background var(--transition);
 }
 .social-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(184,151,58,0.08); }
@@ -1083,7 +1090,7 @@ a.contact-value:hover { color: var(--gold); }
   max-width: 1100px;
   margin: 0 auto;
 }
-.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.22); }
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.48); }
 
 /* ══════════════════════════════════════════════════════════
    RESPONSIVE
@@ -1100,18 +1107,118 @@ a.contact-value:hover { color: var(--gold); }
 }
 
 @media (max-width: 680px) {
-  .nav-links       { display: none; }
-  .hamburger       { display: flex; }
-  .nav-inner       { padding: 0 20px; }
-  .products-section { padding: 70px 20px; }
-  .about-section   { padding: 70px 20px; }
-  .contact-section { padding: 70px 20px; }
-  .footer-inner    { grid-template-columns: 1fr; padding: 40px 24px 24px; gap: 28px; }
-  .footer-bottom   { padding: 16px 24px; }
-  .trust-bar       { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
-  .trust-item      { white-space: nowrap; padding: 13px 20px; }
-  .about-stats     { grid-template-columns: 1fr 1fr; }
-  .products-grid   { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
-  .hero-scroll-hint { display: none; }
+  /* ── Navbar: logo left, cart + hamburger flush right ── */
+  .nav-links  { display: none; }
+  .hamburger  { display: flex; }
+  .nav-inner  {
+    padding: 0 16px;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .logo       { flex: 1; }
+  .cart-btn   { margin-left: 0; }
+  .hamburger  { margin-left: 10px; }
+
+  /* ── Product card: stack price above button ── */
+  .product-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .add-to-cart-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── Footer: brighter text colours ── */
+  .footer-tagline   { color: rgba(255,255,255,0.62); }
+  .footer-col-title { color: rgba(255,255,255,0.60); }
+  .footer-links a   { color: rgba(255,255,255,0.78); }
+  .footer-bottom p  { color: rgba(255,255,255,0.48); }
+  .social-btn       { color: rgba(255,255,255,0.75); }
+
+  /* ── Sections ── */
+  .products-section  { padding: 70px 20px; }
+  .about-section     { padding: 70px 20px; }
+  .contact-section   { padding: 70px 20px; }
+  .footer-inner      { grid-template-columns: 1fr; padding: 40px 24px 24px; gap: 28px; }
+  .footer-bottom     { padding: 16px 24px; }
+  .trust-bar         { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+  .trust-item        { white-space: nowrap; padding: 13px 20px; }
+  .about-stats       { grid-template-columns: 1fr 1fr; }
+  .products-grid     { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 14px; }
+  .hero-scroll-hint  { display: none; }
   .modal-thumbs .modal-thumb { width: 48px; height: 48px; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   IPHONE LANDSCAPE  (large iPhones rotated sideways)
+   Targets phones in landscape that slip past the 680px
+   portrait breakpoint — iPhone 12/13/14/15/16 Pro Max etc.
+   Width range: 681px–932px + must be a short screen (phone)
+══════════════════════════════════════════════════════════ */
+@media (min-width: 681px) and (max-width: 932px) and (orientation: landscape) and (max-height: 500px) {
+
+  /* ── Navbar: same mobile treatment ── */
+  .nav-links  { display: none; }
+  .hamburger  { display: flex; }
+  .nav-inner  {
+    padding: 0 16px;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .logo     { flex: 1; }
+  .cart-btn { margin-left: 0; }
+  .hamburger { margin-left: 10px; }
+
+  /* ── Hero: shorter height in landscape ── */
+  .hero          { min-height: 100svh; }
+  .hero-title    { font-size: clamp(42px, 8vw, 70px); }
+  .hero-sub      { font-size: 14px; margin-bottom: 28px; }
+  .hero-scroll-hint { display: none; }
+
+  /* ── Products: tighter 3-column grid ── */
+  .products-section { padding: 60px 20px; }
+  .products-grid    {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+
+  /* ── Product card: stack price above button (same as portrait) ── */
+  .product-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .add-to-cart-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── Product modal: side-by-side but compressed ── */
+  .modal-inner   { grid-template-columns: 1fr 1fr; max-height: 95vh; }
+  .modal-gallery { position: sticky; top: 0; padding: 16px 16px 0; }
+  .modal-details { padding: 20px 20px 24px; gap: 10px; }
+  .modal-name    { font-size: 22px; }
+  .modal-price   { font-size: 22px; }
+  .modal-thumbs .modal-thumb { width: 44px; height: 44px; }
+
+  /* ── About ── */
+  .about-section { padding: 60px 24px; }
+  .about-grid    { grid-template-columns: 1fr; gap: 36px; }
+  .about-stats   { grid-template-columns: repeat(4, 1fr); }
+  .stat          { padding: 20px 16px; }
+  .stat-num      { font-size: 30px; }
+
+  /* ── Contact ── */
+  .contact-section { padding: 60px 24px; }
+  .contact-grid    { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+  /* ── Footer ── */
+  .footer-inner  { grid-template-columns: 1fr 1fr; padding: 36px 24px 24px; gap: 24px; }
+  .footer-bottom { padding: 14px 24px; }
+
+  /* Trust bar */
+  .trust-bar  { overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; }
+  .trust-item { white-space: nowrap; padding: 12px 18px; }
 }
