@@ -158,6 +158,21 @@ const PRODUCTS = [
       "Luxury-scents-thumbnails/Afnan 9pm Rebel 2.jfif"
     ],
     badge: "Premium"
+  },
+  {
+    id: 11,
+    name: "Lattafa Pride Vintage Radio",
+    brand: "Lattafa",
+    category: "lattafa",
+    price: 75000,
+    description: "Warm, sweet, and addictive — tuned to perfection.",
+    notes: ["Plum", "Lavender", "Palo Santo", "Sandalwood", "Vanilla"],
+    images: [
+      "Luxury-scents-thumbnails/Lattafa Pride.webp",
+      "Luxury-scents-thumbnails/Lattafa Pride.webp",
+      "Luxury-scents-thumbnails/Lattafa Pride.webp"
+    ],
+    badge: "Premium"
   }
 ];
 
