@@ -1,13 +1,13 @@
-/* ============================================================
-   LUXURY SCENTS — Storefront JS  (index.js)
-   Handles: product rendering, modal, cart, checkout, contact
-   ============================================================ */
+ 
+  // LUXURY SCENTS — Storefront JS  (index.js)
+  // Handles: product rendering, modal, cart, checkout, contact
+  
 
 'use strict';
 
 const WHATSAPP = "2349154428230";
 
-/* ─── PRODUCT CATALOGUE ─────────────────────────────────── */
+// PRODUCT CATALOGUE 
 const PRODUCTS = [
   {
     id: 1,
@@ -176,7 +176,7 @@ const PRODUCTS = [
   }
 ];
 
-/* ─── HELPERS ────────────────────────────────────────────── */
+// HELPERS 
 function formatPrice(n) {
   return "₦" + Number(n).toLocaleString("en-NG");
 }
@@ -187,7 +187,7 @@ function getAllProducts() {
   return [...PRODUCTS, ...extra];
 }
 
-/* ─── NAVBAR ─────────────────────────────────────────────── */
+// NAVBAR 
 window.addEventListener("scroll", () => {
   document.getElementById("navbar")
     .classList.toggle("scrolled", window.scrollY > 40);
@@ -204,7 +204,7 @@ function scrollToProducts() {
   document.getElementById("products").scrollIntoView({ behavior: "smooth" });
 }
 
-/* ─── PRODUCT RENDERING ──────────────────────────────────── */
+// PRODUCT RENDERING 
 function renderProducts(filter = "all") {
   const all = getAllProducts();
   const list = filter === "all" ? all : all.filter(p => p.category === filter);
@@ -252,7 +252,7 @@ function filterProducts(category, btn) {
   renderProducts(category);
 }
 
-/* ─── PRODUCT MODAL ──────────────────────────────────────── */
+// PRODUCT MODAL 
 let modalProduct   = null;
 let modalImgIndex  = 0;
 
@@ -375,7 +375,7 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight")  modalNavImg(1);
 });
 
-/* ─── CART ───────────────────────────────────────────────── */
+// CART 
 let cart = [];
 
 function toggleCart() {
@@ -477,7 +477,7 @@ function checkout() {
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
 }
 
-/* ─── CONTACT FORM ───────────────────────────────────────── */
+// CONTACT FORM
 function handleContact(e) {
   e.preventDefault();
   const name     = document.getElementById("cName").value.trim();
@@ -506,7 +506,7 @@ function handleContact(e) {
   document.getElementById("contactForm").reset();
 }
 
-/* ─── INIT ───────────────────────────────────────────────── */
+// INIT
 document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
 });

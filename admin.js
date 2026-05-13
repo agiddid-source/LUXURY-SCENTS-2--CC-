@@ -1,17 +1,17 @@
-/* ============================================================
+/* 
    LUXURY SCENTS — Admin Panel JS  (admin.js)
    Handles: login gate, add/edit/delete products, localStorage
-   ============================================================ */
+*/
 
 'use strict';
 
-/* ─── CONFIG ─────────────────────────────────────────────── */
+/* CONFIG */
 // ⚠️  Change this password before going live!
 const ADMIN_PASSWORD = "admin2025";
 const SESSION_KEY    = "ls_admin_auth";
 const STORAGE_KEY    = "ls_extra_products";
 
-/* ─── AUTH ───────────────────────────────────────────────── */
+/* AUTH */
 function login() {
   const pw  = document.getElementById("passwordInput").value;
   const err = document.getElementById("loginError");
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("keydown", e => { if (e.key === "Enter") login(); });
 });
 
-/* ─── STORAGE HELPERS ────────────────────────────────────── */
+// STORAGE HELPERS
 function getProducts() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 }
@@ -63,7 +63,7 @@ function formatPrice(n) {
   return "₦" + Number(n).toLocaleString("en-NG");
 }
 
-/* ─── ADD PRODUCT ────────────────────────────────────────── */
+// ADD PRODUCT
 function addProduct() {
   const name     = document.getElementById("pName").value.trim();
   const brand    = document.getElementById("pBrand").value.trim();
@@ -127,7 +127,7 @@ function showFormMsg(text, type) {
   }
 }
 
-/* ─── DELETE PRODUCT ─────────────────────────────────────── */
+// DELETE PRODUCT
 function deleteProduct(id) {
   if (!confirm("Are you sure you want to delete this product?")) return;
   const updated = getProducts().filter(p => p.id !== id);
@@ -135,7 +135,7 @@ function deleteProduct(id) {
   renderAdminProducts();
 }
 
-/* ─── EDIT PRODUCT ───────────────────────────────────────── */
+// EDIT PRODUCT
 let editingId = null;
 
 function openEditModal(id) {
@@ -206,7 +206,7 @@ function saveEdit() {
   renderAdminProducts();
 }
 
-/* ─── RENDER PRODUCT LIST ────────────────────────────────── */
+// RENDER PRODUCT LIST
 function renderAdminProducts() {
   const products = getProducts();
   const list     = document.getElementById("adminProductList");

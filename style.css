@@ -1,11 +1,11 @@
-/* ============================================================
+/* 
    LUXURY SCENTS — Main Stylesheet
    Shared across index.html and admin.html
    Aesthetic: Dark luxury, editorial gold
    Fonts: Cormorant Garamond (serif) + Jost (sans)
-   ============================================================ */
+    */
 
-/* ── TOKENS ─────────────────────────────────────────────── */
+/* TOKENS */
 :root {
   --gold:        #b8973a;
   --gold-light:  #d4b45a;
@@ -32,7 +32,7 @@
   --shadow-lg: 0 20px 60px rgba(0,0,0,0.30);
 }
 
-/* ── RESET ───────────────────────────────────────────────── */
+/* RESET */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -46,14 +46,10 @@ a  { text-decoration: none; color: inherit; }
 button { cursor: pointer; font-family: var(--sans); border: none; background: none; }
 input, textarea, select { font-family: var(--sans); }
 
-/* ── LOGO MARK ───────────────────────────────────────────── */
+/* LOGO MARK */
 .logo-mark { color: var(--gold); font-size: 14px; }
 
-/* ══════════════════════════════════════════════════════════
-   STOREFRONT STYLES  (index.html)
-══════════════════════════════════════════════════════════ */
-
-/* ── NAVBAR ──────────────────────────────────────────────── */
+/* NAVBAR */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -174,7 +170,7 @@ input, textarea, select { font-family: var(--sans); }
 }
 .mobile-nav a:hover { color: var(--gold-light); }
 
-/* ── CART DRAWER ─────────────────────────────────────────── */
+/* CART DRAWER */
 .cart-overlay {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.6);
@@ -322,7 +318,7 @@ input, textarea, select { font-family: var(--sans); }
 .checkout-btn:active { transform: translateY(0); }
 .checkout-btn.added  { background: var(--success); color: var(--white); }
 
-/* ── HERO ────────────────────────────────────────────────── */
+/* HERO */
 .hero {
   min-height: 100vh;
   position: relative;
@@ -432,7 +428,7 @@ input, textarea, select { font-family: var(--sans); }
 }
 .scroll-dot { animation: scrollBounce 2.2s 1s ease-in-out infinite; }
 
-/* ── TRUST BAR ───────────────────────────────────────────── */
+/* TRUST BAR */
 .trust-bar {
   background: var(--dark);
   border-top: 1px solid rgba(184,151,58,0.18);
@@ -456,7 +452,7 @@ input, textarea, select { font-family: var(--sans); }
 .trust-item:last-child { border-right: none; }
 .trust-icon { color: var(--gold); font-size: 10px; }
 
-/* ── PRODUCTS ────────────────────────────────────────────── */
+/* PRODUCTS */
 .products-section {
   padding: 100px 40px;
   max-width: 1280px;
@@ -650,7 +646,7 @@ input, textarea, select { font-family: var(--sans); }
 .add-to-cart-btn:hover  { background: var(--gold); color: var(--black); transform: translateY(-1px); }
 .add-to-cart-btn.added  { background: var(--success); color: var(--white); }
 
-/* ── PRODUCT MODAL ───────────────────────────────────────── */
+/* PRODUCT MODAL */
 .modal-overlay {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.72);
@@ -841,7 +837,7 @@ input, textarea, select { font-family: var(--sans); }
   flex-direction: column;
   gap: 10px;
 }
-/* Modal "Add to Cart" — matches the black card button, not the gold checkout button */
+/* Modal "Add to Cart" */
 .modal-actions .checkout-btn {
   background: var(--black);
   color: var(--white);
@@ -876,7 +872,7 @@ input, textarea, select { font-family: var(--sans); }
   letter-spacing: 0.04em;
 }
 
-/* ── ABOUT ───────────────────────────────────────────────── */
+/* ABOUT */
 .about-section {
   background: var(--dark);
   padding: 100px 40px;
@@ -946,7 +942,7 @@ input, textarea, select { font-family: var(--sans); }
   letter-spacing: 0.05em;
 }
 
-/* ── CONTACT ─────────────────────────────────────────────── */
+/* CONTACT */
 .contact-section {
   padding: 100px 40px;
   max-width: 1100px;
@@ -1032,7 +1028,7 @@ input, textarea, select { font-family: var(--sans); }
 .contact-value { font-size: 14px; color: var(--black); display: block; }
 a.contact-value:hover { color: var(--gold); }
 
-/* ── FOOTER ──────────────────────────────────────────────── */
+/* FOOTER */
 .footer {
   background: var(--black);
   border-top: 1px solid rgba(184,151,58,0.14);
@@ -1092,9 +1088,7 @@ a.contact-value:hover { color: var(--gold); }
 }
 .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.48); }
 
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════════════════ */
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .about-grid      { grid-template-columns: 1fr; gap: 50px; }
   .contact-grid    { grid-template-columns: 1fr; }

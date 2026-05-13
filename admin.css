@@ -1,14 +1,10 @@
-/* ============================================================
-   LUXURY SCENTS — Admin Stylesheet (admin.css)
-   Only loaded by admin.html
-   ============================================================ */
 
 body.admin-body-bg {
   background: var(--dark);
   min-height: 100vh;
 }
 
-/* ── LOGIN SCREEN ────────────────────────────────────────── */
+/* LOGIN SCREEN */
 .login-screen {
   min-height: 100vh;
   display: flex;
@@ -79,7 +75,7 @@ body.admin-body-bg {
   min-height: 18px;
 }
 
-/* ── ADMIN APP SHELL ─────────────────────────────────────── */
+/* ADMIN APP SHELL */
 .admin-app { min-height: 100vh; }
 
 .admin-header {
@@ -136,7 +132,7 @@ body.admin-body-bg {
 }
 .logout-btn:hover { color: #e05c5c; border-color: rgba(224,92,92,0.4); }
 
-/* ── ADMIN LAYOUT ────────────────────────────────────────── */
+/* ADMIN LAYOUT */
 .admin-layout {
   max-width: 1160px;
   margin: 0 auto;
@@ -147,7 +143,7 @@ body.admin-body-bg {
   align-items: start;
 }
 
-/* ── ADD PANEL ───────────────────────────────────────────── */
+/* ADD PANEL */
 .add-panel {
   background: var(--dark2);
   border: 1px solid rgba(184,151,58,0.1);
@@ -223,7 +219,7 @@ body.admin-body-bg {
 .form-msg.success { color: #5cb85c; }
 .form-msg.error   { color: #e05c5c; }
 
-/* ── PRODUCTS PANEL ──────────────────────────────────────── */
+/* PRODUCTS PANEL */
 .products-panel {}
 .products-panel-header {
   display: flex;
@@ -327,7 +323,7 @@ body.admin-body-bg {
 .admin-empty-state p { font-size: 14px; margin-bottom: 6px; }
 .admin-empty-state p:last-child { font-size: 12px; opacity: 0.6; }
 
-/* ── EDIT MODAL ──────────────────────────────────────────── */
+/* EDIT MODAL */
 .edit-modal-overlay {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.7);
@@ -407,7 +403,7 @@ body.admin-body-bg {
 }
 .cancel-btn:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
 
-/* ── RESPONSIVE ──────────────────────────────────────────── */
+/* RESPONSIVE */
 @media (max-width: 860px) {
   .admin-layout { grid-template-columns: 1fr; padding: 24px 16px; }
   .add-panel    { position: static; }
